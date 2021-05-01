@@ -1,0 +1,45 @@
+name: exaile-testimg CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          ## These are generally the oldest and newest releases that contain
+          ## Python >= 3.6 and are still maintained
+          # https://en.wikipedia.org/wiki/Debian_version_history#Release_table
+          # https://packages.debian.org/buster/python3
+          - name: debian
+            version: 10
+          # https://en.wikipedia.org/wiki/Fedora_(operating_system)#Releases
+          # https://mdapi.fedoraproject.org/f32/pkg/python3
+          - name: fedora
+            version: 32
+          - name: fedora
+            version: latest
+          # https://en.wikipedia.org/wiki/Ubuntu#Releases
+          # https://packages.ubuntu.com/bionic/python3
+          - name: ubuntu
+            version: 18.04
+          - name: ubuntu
+            version: rolling
+    runs-on: ubuntu-latest
+    env:
+      IMAGE: ghcr.io/${{ github.repository_owner }}/exaile-testimg:${{ matrix.name }}-${{ matrix.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Login
+        run: printf '%s' '${{ secrets.GITHUB_TOKEN }}' | docker login ghcr.io -u '${{ github.actor }}' --password-stdin
+      - name: Build
+        run: >
+          docker build
+          -f 'Dockerfile.${{ matrix.name }}'
+          -t "$IMAGE"
+          --build-arg 'VERSION=${{ matrix.version }}'
+          .
+      - name: Push
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: docker push "$IMAGE"

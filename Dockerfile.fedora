@@ -1,0 +1,20 @@
+ARG VERSION=latest
+FROM docker.io/fedora:$VERSION
+
+RUN useradd -MN exaile
+
+RUN set -x \
+	&& dnf install --assumeyes --nodocs --setopt install_weak_deps=False \
+		findutils \
+		gstreamer1 \
+		gstreamer1-plugins-base \
+		make \
+		python3 \
+		python3-bsddb3 \
+		python3-gobject \
+		python3-mox3 \
+		python3-mutagen \
+		python3-pytest \
+		python3-sphinx \
+		python3-sphinx_rtd_theme \
+	&& dnf clean all

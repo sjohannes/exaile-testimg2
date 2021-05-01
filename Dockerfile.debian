@@ -1,0 +1,24 @@
+ARG VERSION=latest
+FROM debian:$VERSION-slim
+
+RUN useradd -MN exaile
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN set -x \
+	&& apt-get update \
+	&& apt-get install --assume-yes --no-install-recommends \
+		gir1.2-gst-plugins-base-1.0 \
+		gir1.2-gstreamer-1.0 \
+		gstreamer1.0-plugins-base \
+		libgstreamer1.0-0 \
+		make \
+		python3 \
+		python3-bsddb3 \
+		python3-gi \
+		python3-mox3 \
+		python3-mutagen \
+		python3-pytest \
+		python3-sphinx \
+		python3-sphinx-rtd-theme \
+	&& find /var/lib/apt/lists -mindepth 1 -delete
