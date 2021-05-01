@@ -13,6 +13,8 @@ jobs:
           # https://packages.debian.org/buster/python3
           - name: debian
             version: 10
+          - name: debian
+            version: stable
           # https://en.wikipedia.org/wiki/Fedora_(operating_system)#Releases
           # https://mdapi.fedoraproject.org/f32/pkg/python3
           - name: fedora
