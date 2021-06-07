@@ -20,9 +20,9 @@ jobs:
           - name: debian
             version: stable
           # https://en.wikipedia.org/wiki/Fedora_(operating_system)#Releases
-          # https://mdapi.fedoraproject.org/f32/pkg/python3
+          # https://mdapi.fedoraproject.org/f33/pkg/python3
           - name: fedora
-            version: 32
+            version: 33
           - name: fedora
             version: latest
           # https://en.wikipedia.org/wiki/Ubuntu#Releases
