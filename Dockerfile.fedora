@@ -17,4 +17,5 @@ RUN set -x \
 		python3-pytest \
 		python3-sphinx \
 		python3-sphinx_rtd_theme \
+		util-linux \
 	&& dnf clean all
