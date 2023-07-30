@@ -37,7 +37,7 @@ jobs:
       IMAGE: ghcr.io/${{ github.repository_owner }}/exaile-testimg:${{ matrix.name }}-${{ matrix.version }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Login
         run: printf '%s' '${{ secrets.GITHUB_TOKEN }}' | docker login ghcr.io -u '${{ github.actor }}' --password-stdin
       - name: Build
