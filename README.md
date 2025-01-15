@@ -5,13 +5,13 @@ To build locally, run `./build.sh NAME VERSION`.
 `VERSION` is generally the version of the target OS, although each Dockerfile
 can treat it differently.
 
-For example, running `./build.sh debian 10` creates an image using
-`Dockerfile.debian` based on `docker.io/debian:10-slim`.
+For example, running `./build.sh debian 12` creates an image using
+`Dockerfile.debian` based on `docker.io/debian:12-slim`.
 
 
 ## License
 
-Copyright (C) 2021  Exaile contributors
+Copyright (C) 2025  Exaile contributors
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
