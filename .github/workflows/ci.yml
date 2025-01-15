@@ -13,23 +13,23 @@ jobs:
       matrix:
         include:
           ## These are generally the oldest and newest releases that contain
-          ## Python >= 3.8 and are still maintained
-          # https://en.wikipedia.org/wiki/Debian_version_history#Release_table
-          # https://packages.debian.org/bullseye/python3
+          ## Python >= 3.10 and are still maintained
+          # https://endoflife.date/debian
+          # https://packages.debian.org/bookworm/python3 -> 3.11
           - name: debian
-            version: 11
+            version: 12
           - name: debian
             version: stable
-          # https://en.wikipedia.org/wiki/Fedora_(operating_system)#Releases
-          # https://mdapi.fedoraproject.org/f37/pkg/python3
+          # https://endoflife.date/fedora
+          # https://mdapi.fedoraproject.org/f40/pkg/python3 -> 3.12
           - name: fedora
-            version: 37
+            version: 40
           - name: fedora
             version: latest
-          # https://en.wikipedia.org/wiki/Ubuntu#Releases
-          # https://packages.ubuntu.com/focal/python3
+          # https://endoflife.date/ubuntu
+          # https://packages.ubuntu.com/jammy/python3 -> 3.10
           - name: ubuntu
-            version: 20.04
+            version: 22.04
           - name: ubuntu
             version: rolling
     runs-on: ubuntu-latest
